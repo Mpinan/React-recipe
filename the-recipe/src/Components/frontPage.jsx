@@ -29,12 +29,12 @@ class FrontPage extends Component {
               </p>
             </Jumbotron>
           </div>
-          <h1>Random recipe:</h1>
-          <Button onClick={() => this.getRandomRecipe(this.props.recipes)}>
-            Get Recipe
-          </Button>
-          {showRecipe ? <RandomRecipe randomRecipe={randomRecipe} /> : null}
         </Container>
+        <h1>Random recipe:</h1>
+        <Button onClick={() => this.getRandomRecipe(this.props.recipes)}>
+          Get Recipe
+        </Button>
+        {showRecipe ? <RandomRecipe randomRecipe={randomRecipe} /> : null}
       </div>
     );
   }

@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import FrontPage from "./Components/frontPage";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+
+import NotFound from "./Components/notFound";
+import Recipes from "./Components/recipes";
 
 class App extends Component {
   state = {
@@ -21,7 +25,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <FrontPage recipes={this.state.recipes} />
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path="/home"
+              render={(props) => <FrontPage recipes={this.state.recipes} />}
+            />
+            <Redirect exact path="/" exact to="/home" />
+            <Route
+              exact
+              path="/recipes"
+              render={(props) => (
+                <Recipes {...props} recipes={this.state.recipes} />
+              )}
+            />
+            <Route path="/*" component={NotFound} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
