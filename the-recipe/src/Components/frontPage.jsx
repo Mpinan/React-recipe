@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import { Jumbotron, Button, Container } from "reactstrap";
+import RandomRecipe from "./randomRecipe";
 
 class FrontPage extends Component {
   state = {
     randomRecipe: {},
+    showRecipe: true,
   };
 
   getRandomRecipe(recipes) {
-    console.log(recipes);
     const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
     this.setState({ randomRecipe });
+    if (this.state.showRecipe) {
+      return <RandomRecipe />;
+    }
   }
+
   render() {
+    const { randomRecipe } = this.state;
     return (
       <div>
         <Container>
@@ -27,11 +33,9 @@ class FrontPage extends Component {
             </Jumbotron>
           </div>
           Random recipe:
-          {console.log(this.props.recipes)}
           <Button onClick={() => this.getRandomRecipe(this.props.recipes)}>
             Get Recipe
           </Button>
-          Name: {this.state.randomRecipe.name}
         </Container>
       </div>
     );
