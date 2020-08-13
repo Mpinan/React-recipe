@@ -20,7 +20,7 @@ class FrontPage extends Component {
         <Container>
           <div>
             <Jumbotron>
-              <h1 className="display-3">Hello, world!</h1>
+              <h1 className="display-3">Hello, amigo!</h1>
               <p className="lead">Welcome to the Recipe</p>
               <hr className="my-2" />
               <p>Feel free to post any recipe.</p>
@@ -29,7 +29,7 @@ class FrontPage extends Component {
               </p>
             </Jumbotron>
           </div>
-          Random recipe:
+          <h1>Random recipe:</h1>
           <Button onClick={() => this.getRandomRecipe(this.props.recipes)}>
             Get Recipe
           </Button>
