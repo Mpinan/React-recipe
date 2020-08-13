@@ -5,19 +5,16 @@ import RandomRecipe from "./randomRecipe";
 class FrontPage extends Component {
   state = {
     randomRecipe: {},
-    showRecipe: true,
+    showRecipe: false,
   };
 
   getRandomRecipe(recipes) {
     const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-    this.setState({ randomRecipe });
-    if (this.state.showRecipe) {
-      return <RandomRecipe />;
-    }
+    this.setState({ randomRecipe, showRecipe: !this.state.showRecipe });
   }
 
   render() {
-    const { randomRecipe } = this.state;
+    const { randomRecipe, showRecipe } = this.state;
     return (
       <div>
         <Container>
@@ -36,6 +33,7 @@ class FrontPage extends Component {
           <Button onClick={() => this.getRandomRecipe(this.props.recipes)}>
             Get Recipe
           </Button>
+          {showRecipe ? <RandomRecipe randomRecipe={randomRecipe} /> : null}
         </Container>
       </div>
     );
