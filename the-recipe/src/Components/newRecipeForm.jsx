@@ -9,6 +9,7 @@ import {
   Input,
   Container,
 } from "reactstrap";
+import Steps from "./steps";
 
 class NewRecipeForm extends Component {
   state = {};
@@ -50,24 +51,23 @@ class NewRecipeForm extends Component {
               <Col md={3}>
                 <FormGroup>
                   <Label for="examplePassword">Cooking Time</Label>
-                  <Input type="text" placeholder="minutes" />
+                  <Input type="text" placeholder="Minutes" />
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="examplePassword">Preparation Time</Label>
-                  <Input type="text" placeholder="minutes" />
+                  <Input type="text" placeholder="Minutes" />
                 </FormGroup>
               </Col>
             </Row>
             <FormGroup>
               <Label for="exampleAddress">Description</Label>
-              <Input
-                type="text"
-                name="address"
-                id="exampleAddress"
-                placeholder="Short description of your dish"
-              />
+              <Input type="text" placeholder="Short description of your dish" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleAddress">Ingredients</Label>
+              <Input type="text" placeholder="1 tbs oil, 4g of salt... etc" />
             </FormGroup>
             <FormGroup>
               <Label for="exampleAddress2">Address 2</Label>
@@ -78,33 +78,15 @@ class NewRecipeForm extends Component {
                 placeholder="Apartment, studio, or floor"
               />
             </FormGroup>
-            <Row form>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="exampleCity">City</Label>
-                  <Input type="text" name="city" id="exampleCity" />
-                </FormGroup>
-              </Col>
-              <Col md={4}>
-                <FormGroup>
-                  <Label for="exampleState">State</Label>
-                  <Input type="text" name="state" id="exampleState" />
-                </FormGroup>
-              </Col>
-              <Col md={2}>
-                <FormGroup>
-                  <Label for="exampleZip">Zip</Label>
-                  <Input type="text" name="zip" id="exampleZip" />
-                </FormGroup>
-              </Col>
-            </Row>
-            <FormGroup check>
-              <Input type="checkbox" name="check" id="exampleCheck" />
-              <Label for="exampleCheck" check>
-                Check me out
+            <FormGroup row>
+              <Label for="exampleText" sm={2}>
+                Text Area
               </Label>
+              <Col sm={10}>
+                <Steps />
+              </Col>
             </FormGroup>
-            <Button>Sign in</Button>
+            <Button>Post Recipe</Button>
           </Form>
         </Container>
       </div>
