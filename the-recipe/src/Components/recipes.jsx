@@ -26,12 +26,90 @@ class Recipes extends Component {
   }
 
   getMains() {
-    console.log(this.props);
+    console.log(this.props, "hello");
+    this.props.recipes.forEach((recipe) => {
+      if (recipe.type === "Main") {
+        return (
+          <div>
+            <h1>HELLOOOOOOOOOOO</h1>
+            {/* <h4>Name</h4>
+            {recipe.name}
+            <h4>Description</h4>
+            {recipe.description}
+            <h4>Difficulty</h4>
+            {recipe.difficulty}
+            <h4>Cooking time</h4>
+            {recipe.cookTime}
+            <h4>Preparation time</h4>
+            {recipe.prepTime}
+            <h4>Serves</h4>
+            {recipe.serves}
+            <h4>Ingredients</h4>
+            {recipe.ingredients.split("\n").map(function (item, idx) {
+              return (
+                <span key={idx}>
+                  {item}
+                  <br />
+                </span>
+              );
+            })}
+
+            <h4>Steps</h4>
+            {Object.entries(recipe.steps).map(([key, val]) => {
+              return (
+                <div key={key}>
+                  {key}: {val}
+                  <br />
+                </div>
+              );
+            })} */}
+          </div>
+        );
+      }
+    });
   }
 
-  //   getDesserts() {
+  getDesserts() {
+    this.props.recipes.forEach((recipe) => {
+      if (recipe.type === "Dessert") {
+        return (
+          <div>
+            <h4>Name</h4>
+            {recipe.name}
+            <h4>Description</h4>
+            {recipe.description}
+            <h4>Difficulty</h4>
+            {recipe.difficulty}
+            <h4>Cooking time</h4>
+            {recipe.cookTime}
+            <h4>Preparation time</h4>
+            {recipe.prepTime}
+            <h4>Serves</h4>
+            {recipe.serves}
+            <h4>Ingredients</h4>
+            {recipe.ingredients.split("\n").map(function (item, idx) {
+              return (
+                <span key={idx}>
+                  {item}
+                  <br />
+                </span>
+              );
+            })}
 
-  //   }
+            <h4>Steps</h4>
+            {Object.entries(recipe.steps).map(([key, val]) => {
+              return (
+                <div key={key}>
+                  {key}: {val}
+                  <br />
+                </div>
+              );
+            })}
+          </div>
+        );
+      }
+    });
+  }
 
   render() {
     return (
@@ -44,7 +122,7 @@ class Recipes extends Component {
                   this.activeTab("1");
                 }}
               >
-                Main
+                Mains
               </NavLink>
             </NavItem>
             <NavItem>
@@ -59,36 +137,10 @@ class Recipes extends Component {
           </Nav>
           <TabContent activeTab={this.state.tab}>
             <TabPane tabId="1">
-              <Row>
-                <Col sm="12">
-                  <h4>Tab 1 Contents</h4>
-                </Col>
-              </Row>
+              <h4>Tab 1 Contents</h4>
+              {this.getMains()}
             </TabPane>
-            <TabPane tabId="2">
-              <Row>
-                <Col sm="6">
-                  <Card body>
-                    <CardTitle>Special Title Treatment</CardTitle>
-                    <CardText>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Go somewhere</Button>
-                  </Card>
-                </Col>
-                <Col sm="6">
-                  <Card body>
-                    <CardTitle>Special Title Treatment</CardTitle>
-                    <CardText>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Go somewhere</Button>
-                  </Card>
-                </Col>
-              </Row>
-            </TabPane>
+            <TabPane tabId="2">{this.getDesserts()}</TabPane>
           </TabContent>
         </Container>
       </div>
