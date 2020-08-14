@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import NotFound from "./Components/notFound";
 import Recipes from "./Components/recipes";
+import NewRecipeForm from "./Components/newRecipeForm";
 
 class App extends Component {
   state = {
@@ -18,7 +19,6 @@ class App extends Component {
     fetch(`https://us-central1-the-recipe-api.cloudfunctions.net/app/recipes`)
       .then((response) => response.json())
       .then((result) => this.setState({ recipes: result }))
-      .then((result) => console.log(this.state.recipes))
       .catch((err) => console.log(err));
   }
 
@@ -40,6 +40,7 @@ class App extends Component {
                 <Recipes {...props} recipes={this.state.recipes} />
               )}
             />
+            <Route exact path="/new-recipe" component={NewRecipeForm} />
             <Route path="/*" component={NotFound} />
           </Switch>
         </BrowserRouter>
