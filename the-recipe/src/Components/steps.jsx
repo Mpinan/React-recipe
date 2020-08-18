@@ -6,7 +6,13 @@ class Steps extends Component {
   render() {
     return (
       <div>
-        <Input type="textarea" name="text" id="exampleText" />
+        <Input
+          type="text"
+          name="text"
+          id="exampleText"
+          placeholder="First add oil to the pan...."
+          onChange={this.props.onChange}
+        />
       </div>
     );
   }
