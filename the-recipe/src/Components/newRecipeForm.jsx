@@ -22,6 +22,7 @@ class NewRecipeForm extends Component {
     description: "",
     ingredients: "",
     steps: {},
+    stepsCount: 0,
   };
 
   onChange = (e) => {
@@ -59,6 +60,22 @@ class NewRecipeForm extends Component {
       });
   };
 
+  onClick = () => {
+    console.log(this.state);
+    this.setState({
+      stepsCount: this.state.stepsCount + 1,
+    });
+  };
+
+  getSteps = () => {
+    console.log(this.state);
+    let steps = [];
+    for (let i = 0; i < this.state.stepsCount; i++) {
+      steps.push(<Steps key={i} />);
+    }
+    return steps;
+  };
+
   render() {
     return (
       <div>
@@ -67,9 +84,10 @@ class NewRecipeForm extends Component {
             <Row form>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="exampleEmail">Name</Label>
+                  <Label for="name">Name</Label>
                   <Input
                     type="text"
+                    name="name"
                     placeholder="Name of dish"
                     id="name"
                     onChange={this.onChange}
@@ -78,7 +96,7 @@ class NewRecipeForm extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="examplePassword">Serves</Label>
+                  <Label for="serves">Serves</Label>
                   <Input
                     type="text"
                     name="serves"
@@ -90,7 +108,7 @@ class NewRecipeForm extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="examplePassword">Difficulty</Label>
+                  <Label for="difficulty">Difficulty</Label>
                   <Input
                     type="text"
                     name="difficulty"
@@ -102,7 +120,7 @@ class NewRecipeForm extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="examplePassword">Type</Label>
+                  <Label for="type">Type</Label>
                   <Input
                     type="text"
                     name="type"
@@ -114,7 +132,7 @@ class NewRecipeForm extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="examplePassword">Cooking Time</Label>
+                  <Label for="cookTime">Cooking Time</Label>
                   <Input
                     type="text"
                     name="cookTime"
@@ -126,7 +144,7 @@ class NewRecipeForm extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label for="examplePassword">Preparation Time</Label>
+                  <Label for="prepTime">Preparation Time</Label>
                   <Input
                     type="text"
                     name="prepTime"
@@ -138,7 +156,7 @@ class NewRecipeForm extends Component {
               </Col>
             </Row>
             <FormGroup>
-              <Label for="exampleAddress">Description</Label>
+              <Label for="description">Description</Label>
               <Input
                 type="text"
                 name="description"
@@ -148,7 +166,7 @@ class NewRecipeForm extends Component {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="exampleAddress">Ingredients</Label>
+              <Label for="ingredients">Ingredients</Label>
               <Input
                 type="text"
                 name="ingredients"
@@ -158,8 +176,10 @@ class NewRecipeForm extends Component {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="exampleAddress2">Steps</Label>
+              <Label for="steps">Steps</Label>
               <Steps onChange={this.onChange} />
+              <Button onClick={this.onClick}>Hello</Button>
+              {this.getSteps()}
             </FormGroup>
             <Button>Post Recipe</Button>
           </Form>
