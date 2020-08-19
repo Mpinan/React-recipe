@@ -176,9 +176,9 @@ class NewRecipeForm extends Component {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="steps">Steps</Label>
+              <Label for="steps">Steps:</Label>
               <Steps onChange={this.onChange} />
-              <Button onClick={this.onClick}>Hello</Button>
+              <Button onClick={this.onClick}>+</Button>
               {this.getSteps()}
             </FormGroup>
             <Button>Post Recipe</Button>
