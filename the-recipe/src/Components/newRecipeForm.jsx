@@ -22,7 +22,8 @@ class NewRecipeForm extends Component {
     description: "",
     ingredients: "",
     steps: {},
-    stepsCount: 0,
+    stepsCount: 1,
+    step: "",
   };
 
   onChange = (e) => {
@@ -60,17 +61,23 @@ class NewRecipeForm extends Component {
       });
   };
 
-  onClick = () => {
+  onClickNewStep = () => {
+    const steps = {};
     console.log(this.state);
     this.setState({
       stepsCount: this.state.stepsCount + 1,
     });
+    if (Object.keys(steps).length === 0) {
+      steps.stepNum = this.state.stepsCount;
+      steps.step = this.state.step;
+    }
+    console.log(steps);
   };
 
   getSteps = () => {
     console.log(this.state);
     let steps = [];
-    for (let i = 0; i < this.state.stepsCount; i++) {
+    for (let i = 1; i < this.state.stepsCount; i++) {
       steps.push(<Steps key={i} />);
     }
     return steps;
@@ -177,8 +184,12 @@ class NewRecipeForm extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="steps">Steps:</Label>
-              <Steps onChange={this.onChange} />
-              <Button onClick={this.onClick}>+</Button>
+              <Steps
+                onChange={this.onChange}
+                step={this.state.step}
+                stepsCount={this.state.stepsCount}
+              />
+              <Button onClick={this.onClickNewStep}>+</Button>
               {this.getSteps()}
             </FormGroup>
             <Button>Post Recipe</Button>

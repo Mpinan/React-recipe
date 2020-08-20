@@ -3,12 +3,13 @@ import { Col, FormGroup, Label, Input } from "reactstrap";
 
 class Steps extends Component {
   state = {};
+
   render() {
     return (
       <div>
         <Input
           type="text"
-          name="text"
+          name="step"
           id="exampleText"
           placeholder="First add oil to the pan...."
           onChange={this.props.onChange}
