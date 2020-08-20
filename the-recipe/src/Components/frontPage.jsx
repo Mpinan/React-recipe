@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Jumbotron, Button, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import RandomRecipe from "./randomRecipe";
-import Recipes from "./recipes";
 
 class FrontPage extends Component {
   state = {
@@ -28,12 +27,10 @@ class FrontPage extends Component {
               <p>Feel free to post any recipe.</p>
               <p className="lead">
                 <Button color="primary">
-                  <Link href="/recipes" />
-                  Recipes
+                  <Link to="/recipes">Recipes</Link>
                 </Button>
                 <Button color="primary">
-                  <Link href="/new-recipe" />
-                  Post New Recipe
+                  <Link to="/new-recipe">Post New Recipe</Link>
                 </Button>
               </p>
             </Jumbotron>
