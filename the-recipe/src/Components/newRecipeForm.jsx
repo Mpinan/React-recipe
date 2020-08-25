@@ -71,7 +71,7 @@ class NewRecipeForm extends Component {
     if (totalSteps) {
       totalSteps[this.state.stepsCount] = this.state.step;
     }
-    // Object.assign(steps, totalSteps);
+    Object.assign(steps, totalSteps);
     console.log(totalSteps, "-----");
   };
 
