@@ -2,7 +2,20 @@ import React, { Component } from "react";
 import { Col, FormGroup, Label, Input } from "reactstrap";
 
 class Steps extends Component {
-  state = {};
+  state = {
+    step: "",
+  };
+
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state.step);
+  };
+
+  addToStep = () => {
+    let step = { 1: this.state.step };
+    Object.assign(this.props.steps, { 1: this.state.step });
+    console.log(this.props.steps);
+  };
 
   render() {
     return (
@@ -12,8 +25,9 @@ class Steps extends Component {
           name="step"
           id="exampleText"
           placeholder="First add oil to the pan...."
-          onChange={this.props.onChange}
+          onChange={this.onChange}
         />
+        {this.addToStep()}
       </div>
     );
   }

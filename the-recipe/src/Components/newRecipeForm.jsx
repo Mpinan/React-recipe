@@ -23,7 +23,6 @@ class NewRecipeForm extends Component {
     ingredients: "",
     steps: {},
     stepsCount: 1,
-    step: "",
   };
 
   onChange = (e) => {
@@ -68,18 +67,20 @@ class NewRecipeForm extends Component {
 
     let totalSteps = { 0: "" };
 
-    if (totalSteps) {
-      totalSteps[this.state.stepsCount] = this.state.step;
-    }
-    Object.assign(steps, totalSteps);
+    Object.assign(this.state.steps, totalSteps);
     console.log(totalSteps, "-----");
   };
 
   getSteps = () => {
-    // console.log(this.state);
+    console.log(this.state);
     let steps = [];
+    // this.setState({
+    //   stepsCount: this.state.stepsCount + 1,
+    // });
     for (let i = 1; i < this.state.stepsCount; i++) {
-      steps.push(<Steps key={i} />);
+      steps.push(
+        <Steps key={i} steps={this.state.steps} count={this.state.stepsCount} />
+      );
     }
     console.log(steps);
     return steps;
