@@ -71,6 +71,12 @@ class NewRecipeForm extends Component {
     console.log(totalSteps, "-----");
   };
 
+  stepObject = () => {
+    let step = {};
+
+    this.setState({});
+  };
+
   getSteps = () => {
     console.log(this.state);
     let steps = [];
@@ -79,7 +85,14 @@ class NewRecipeForm extends Component {
     // });
     for (let i = 1; i < this.state.stepsCount; i++) {
       steps.push(
-        <Steps key={i} steps={this.state.steps} count={this.state.stepsCount} />
+        <div>
+          <Steps
+            key={i}
+            steps={this.state.steps}
+            count={this.state.stepsCount}
+          />
+          <Button onClick={this.onClickNewStep}>+</Button>
+        </div>
       );
     }
     console.log(steps);

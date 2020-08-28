@@ -12,9 +12,13 @@ class Steps extends Component {
   };
 
   addToStep = () => {
-    let step = { 1: this.state.step };
-    Object.assign(this.props.steps, { 1: this.state.step });
-    console.log(this.props.steps);
+    let count = 0;
+    let step = { "1": this.state.step };
+    // Object.assign(this.props.steps, { 1: this.state.step });
+    let object = {};
+    Object.assign(object, step);
+    // console.log(step);
+    console.log(object);
   };
 
   render() {
